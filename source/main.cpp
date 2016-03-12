@@ -10,6 +10,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+	ALSA output;
 	Piano piano(output);
 }
 
