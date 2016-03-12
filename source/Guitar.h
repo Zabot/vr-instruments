@@ -1,6 +1,8 @@
 #ifndef GUITAR_H
 #define GUITAR_H
 
+class MidiSink;
+
 class Guitar
 {
 public:
