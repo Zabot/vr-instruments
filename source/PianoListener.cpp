@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <iostream>
 #include <string.h>
 #include "Leap.h"
@@ -33,23 +32,13 @@ void PianoListener::onExit(const Controller& controller) {
 void PianoListener::onFrame(const Controller& controller) {
 	// Get the most recent frame and report some basic information
 	const Frame frame = controller.frame();
-	/*	std::cout << "Frame id: " << frame.id()
-			<< ", timestamp: " << frame.timestamp()
-			<< ", hands: " << frame.hands().count()
-			<< ", extended fingers: " << frame.fingers().extended().count() << std::endl;*/
-
 	const FingerList fingers = frame.fingers();
 	std::vector<int> keysThisFrame;
 	for (FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); ++fl) {
 		const Finger finger = *fl;
-		/*		std::cout << std::string(4, ' ')
-					<< " finger, id: " << finger.id()
-					<< "tip position:" << finger.tipPosition()
-					<< "tip velocity:" << finger.tipVelocity() << std::endl;
-		*/
 		const Vector position = finger.tipPosition();
 		const Vector velocity = finger.tipVelocity();
-		// ( position.x )
+
 		unsigned int numOfKeys = 8;
 		unsigned int maxKeyboardLength = 270;
 		if (finger.type() != finger.TYPE_THUMB) {
@@ -60,11 +49,9 @@ void PianoListener::onFrame(const Controller& controller) {
 				keysThisFrame.push_back(theKey);
 				if (!isInVector(theKey, keysDown)) {
 					keysDown.push_back(theKey);
-					cout << "Key " << theKey << " is pressed down" << endl;//	piano.keyDown(theKey, finger.tipVelocity.y);
+					cout << "Key " << theKey << " is pressed down" << endl;
+					piano.keyDown(theKey + 64);
 				}
-
-				
-					//cout << "KEY" << theKey << "  " << finger.type() << "Velocity:" << finger.tipVelocity().y << endl;
 			}
 		}
 	}
@@ -72,8 +59,8 @@ void PianoListener::onFrame(const Controller& controller) {
 	for (auto n = keysDown.begin(); n < keysDown.end(); n++) {
 
 		if (!isInVector(*n, keysThisFrame)) {
-			//keysDown.erase(std::remove(keysDown.begin(), keysDown.end(), *n), keysDown.end());
-			cout << "Key " << *n << " is now up" << endl;//piano.keyUp(n);
+			cout << "Key " << *n << " is now up" << endl;
+			piano.keyUp(theKey + *n);
 		}
 
 	}
@@ -82,9 +69,6 @@ void PianoListener::onFrame(const Controller& controller) {
 	{
 		keysDown.push_back(n);
 	}
-	//for (int n : keysDown)cout << n << " ";
-	//cout << endl;
-	//cout << "Key" << theKey << endl;
 }
 
 

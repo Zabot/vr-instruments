@@ -1,3 +1,4 @@
+#include "LeapMotion.h"
 
 #include "stdafx.h"
 #include "Leapmotion.h"

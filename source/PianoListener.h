@@ -1,6 +1,6 @@
-#pragma once
-#include "stdafx.h"
-#include "piano.h"
+#ifndef PIANO_LISTENER
+#define PIANO_LISTENER
+
 #include "Leap.h"
 #include <iostream>
 #include <string.h>
@@ -29,3 +29,5 @@ private:
 //	Piano piano;
 	std::vector<int> keysDown;
 };
+
+#endif
