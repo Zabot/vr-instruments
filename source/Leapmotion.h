@@ -1,10 +1,13 @@
-#pragma once
-#include "stdafx.h"
-#include "piano.h"
-#include "Leap.h"
+#ifndef LEAP_MOTION_H
+#define LEAP_MOTION_H
+
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <math.h>
+
+#include <Leap.h>
+
+#include "Piano.h"
 
 using namespace Leap;
 using namespace std;
@@ -18,3 +21,5 @@ class Leapmotion {
 		Piano &piano;
 
 };
+
+#endif

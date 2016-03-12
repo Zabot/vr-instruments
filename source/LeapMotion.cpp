@@ -1,6 +1,4 @@
+#include "LeapMotion.h"
 
-#include "stdafx.h"
-#include "Leapmotion.h"
-
-Leapmotion::Leapmotion(Piano &p):piano(p) {
+LeapMotion::LeapMotion(Piano &p):piano(p) {
 }
