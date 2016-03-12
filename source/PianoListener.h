@@ -6,11 +6,14 @@
 #include <string.h>
 #include <math.h>
 #include <vector>
+#include "Piano.h"
 
 using namespace Leap;
 
 class PianoListener : public Listener {
 public:
+	PianoListener(Piano &piano);
+
 	virtual void onInit(const Controller&);
 	virtual void onConnect(const Controller&);
 	virtual void onDisconnect(const Controller&);
@@ -26,7 +29,7 @@ private:
 	bool isInVector(int k, std::vector<int> &v);
 
 private:
-//	Piano piano;
+	Piano &piano;
 	std::vector<int> keysDown;
 };
 

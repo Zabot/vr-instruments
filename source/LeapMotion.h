@@ -3,9 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <math.h>
-#include "PianoListener.h"
-
 
 #include <Leap.h>
 
@@ -14,15 +11,15 @@
 using namespace Leap;
 using namespace std;
 
-class Leapmotion {
+class LeapMotion {
 
 	public:
-		Leapmotion(Piano &p);
+		LeapMotion(Listener &l);
+		~LeapMotion();
 
 
 	private:
-		Piano &piano;
-		PianoListener listener;
+		Listener &listener;
 		Controller controller;
 };
 

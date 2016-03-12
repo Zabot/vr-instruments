@@ -1,12 +1,11 @@
 #include "LeapMotion.h"
 
-#include "stdafx.h"
-#include "Leapmotion.h"
-
-Leapmotion::Leapmotion(Piano &p):piano(p) {
+LeapMotion::LeapMotion(Listener &l) 
+	:listener(l)
+{
 	controller.addListener(listener);
 }
 
-Leapmotion::~Leapmotion() {
+LeapMotion::~LeapMotion() {
 	controller.removeListener(listener);
 }
