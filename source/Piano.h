@@ -6,11 +6,12 @@
 class Piano
 {
 public:
-	void keyDown(unsigned int key);
+	Piano(MidiSink &output);
+	void keyDown(unsigned int key, unsigned int vel = 127);
 	void keyUp(unsigned int key);
 
 private:
-	MidiSink& midiSink;
+	MidiSink& sink;
 };
 
 #endif

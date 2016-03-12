@@ -1,12 +1,17 @@
 #include "Piano.h"
 
-void Piano::keyDown(unsigned int key)
+Piano::Piano(MidiSink &output)
+	:sink(output)
 {
-	midiSink.noteOn(key, 100);
+}
+
+void Piano::keyDown(unsigned int key, unsigned int vel)
+{
+	sink.noteOn(key, vel);
 }
 
 void Piano::keyUp(unsigned int key)
 {
-	midiSink.noteOff(key);
+	sink.noteOff(key);
 }
 
